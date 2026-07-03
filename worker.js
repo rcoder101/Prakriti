@@ -90,7 +90,7 @@ export default {
       if (inserted && env.RESEND_API_KEY) {
         ctx.waitUntil(sendWelcome(env, email));
       }
-      return json(200, { ok: true });
+      return json(200, { ok: true, already: !inserted });
     }
 
     // Everything else: the static site.

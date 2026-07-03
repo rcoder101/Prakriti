@@ -280,9 +280,9 @@
 <section class="alt" id="waitlist">
   <div class="wrap">
     <div class="waitlist-box">
-      <h2>Be first in the nest</h2>
-      <p>We're welcoming a small group of early users soon. Leave your email
-      and Ollie will hoot when it's your turn.</p>
+      <h2 id="waitlist-title">Be first in the nest</h2>
+      <p id="waitlist-lead">We're welcoming a small group of early users soon.
+      Leave your email and Ollie will hoot when it's your turn.</p>
       <form class="waitlist-form" id="waitlist-form"
             action="/api/waitlist" method="post">
         <input type="email" name="email" placeholder="you@example.com"
@@ -349,11 +349,17 @@
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function (r) {
-        if (r.ok) {
-          form.style.display = 'none';
-          document.getElementById('waitlist-note').textContent =
-            "You're in the nest. Ollie will hoot when it's your turn.";
-        } else { throw new Error(); }
+        if (!r.ok) throw new Error();
+        return r.json();
+      }).then(function (data) {
+        form.style.display = 'none';
+        document.getElementById('waitlist-lead').style.display = 'none';
+        document.getElementById('waitlist-title').textContent = data.already
+          ? "You're already in the nest"
+          : "You're in the nest";
+        document.getElementById('waitlist-note').textContent = data.already
+          ? "Ollie hasn't forgotten you — you'll hear from her the moment it's your turn."
+          : "Welcome email is on its way. Ollie will hoot when it's your turn.";
       }).catch(function () {
         btn.disabled = false; btn.textContent = 'Count me in';
         document.getElementById('waitlist-note').textContent =
