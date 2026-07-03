@@ -1,5 +1,9 @@
 {
   "name": "prakriti",
   "compatibility_date": "2026-07-02",
-  "assets": { "directory": "./" }
+  "assets": { "directory": "./" },
+  "routes": [
+    { "pattern": "olliewise.com", "custom_domain": true },
+    { "pattern": "www.olliewise.com", "custom_domain": true }
+  ]
 }
