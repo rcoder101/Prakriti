@@ -183,7 +183,7 @@
     </div>
     <div class="mascot-card">
       <div class="speech" id="ollie-speech">Evening. Time to wind down well.</div>
-      <img src="ollie.png" alt="Ollie the owl, holding a sprig of fresh leaves">
+      <img src="ollie.png" id="ollie-img" alt="Ollie the owl, holding a sprig of fresh leaves">
     </div>
   </header>
 </div>
@@ -306,6 +306,12 @@
       h >= 17 && h < 22 ? 'Evening. Time to wind down well.' :
                           'Still up? Ollie is already asleep.';
     document.getElementById('ollie-speech').textContent = line;
+    // At night, Ollie sleeps in her nest.
+    if (h >= 22 || h < 5) {
+      var img = document.getElementById('ollie-img');
+      img.src = 'ollie_night.png';
+      img.alt = 'Ollie the owl, asleep in her nest under a crescent moon';
+    }
   })();
 </script>
 </body>
