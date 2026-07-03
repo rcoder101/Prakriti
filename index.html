@@ -99,6 +99,10 @@
     background: var(--card); border-radius: 20px; padding: 26px;
     box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05);
   }
+  .step h3 { display: flex; align-items: center; gap: 10px; }
+  .step .icon {
+    width: 24px; height: 24px; color: var(--cta); flex-shrink: 0;
+  }
   section.alt .step { background: var(--canvas); }
   .step .num {
     width: 34px; height: 34px; border-radius: 50%; background: var(--warm);
@@ -113,15 +117,14 @@
   .pattern {
     border-radius: 20px; padding: 26px; background: var(--card);
     box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05);
+    display: flex; flex-direction: column;
   }
-  .pattern.p1 { border-top: 4px solid var(--vata); }
-  .pattern.p2 { border-top: 4px solid var(--pitta); }
-  .pattern.p3 { border-top: 4px solid var(--kapha); }
-  .pattern h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .pattern h3 { font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .pattern .icon { width: 28px; height: 28px; color: var(--cta); flex-shrink: 0; }
   .pattern p { font-size: 0.95rem; color: var(--ink-soft); }
   .pattern .trad {
-    margin-top: 14px; font-size: 0.8rem; color: var(--ink-soft);
-    border-top: 1px dashed var(--warm-border); padding-top: 10px;
+    margin-top: auto; padding-top: 14px; font-size: 0.8rem; color: var(--ink-soft);
+    border-top: 1px dashed var(--warm-border);
   }
   .pattern .trad em { color: var(--ink); font-style: normal; font-weight: 700; }
 
@@ -200,23 +203,34 @@
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h3>Say hello</h3>
-        <p>A handful of friendly questions about your energy, appetite, and
-        sleep &mdash; and you get your first two habits the same day.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.9 8.9 0 0 1-3.2-.6L4 20.5l1.4-4A8 8 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3.2 8.4 8.4 0 0 1 21 11.5z"/>
+          <circle cx="9" cy="11.5" r="0.6" fill="currentColor"/>
+          <circle cx="12.5" cy="11.5" r="0.6" fill="currentColor"/>
+          <circle cx="16" cy="11.5" r="0.6" fill="currentColor"/>
+        </svg>Say hello</h3>
+        <p>A few friendly questions &mdash; and your first two habits
+        the same day.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h3>Meet your blueprint</h3>
-        <p>A short check-in a couple of days later completes your picture:
-        your natural constitution, how your digestion is doing, and what
-        needs attention first &mdash; described in words you already know.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 3.5h9.5L19 7v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"/>
+          <path d="M15.5 3.5V7H19"/>
+          <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3.5"/>
+        </svg>Meet your blueprint</h3>
+        <p>A short check-in completes your picture: how you're built, and
+        what needs attention first &mdash; in words you already know.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>Live your rhythm</h3>
-        <p>Small daily habits, gentle check-ins, and a weekly pulse on how
-        you're trending. Habits unlock as your streak builds &mdash; never
-        a wall of tasks.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6" transform="translate(-1.5 1)"/>
+          <circle cx="17.5" cy="5.5" r="2.3"/>
+          <path d="M17.5 1.8v.9M17.5 8.3v.9M13.8 5.5h.9M20.3 5.5h.9"/>
+        </svg>Live your rhythm</h3>
+        <p>Small daily habits and a weekly pulse on how you're trending.
+        More unlocks as your streak builds.</p>
       </div>
     </div>
   </div>
@@ -233,22 +247,30 @@
     </p>
     <div class="patterns">
       <div class="pattern p1">
-        <h3>&ldquo;Running in all directions&rdquo;</h3>
-        <p>Quick, creative, easily scattered. Bursts of energy, then a crash.
-        What helps most: grounding, warmth, and rhythm.</p>
-        <p class="trad">Ayurveda calls this pattern <em>Vata</em> &mdash;
-        you'll learn the name when you're ready for it.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 8h9.5a2.2 2.2 0 1 0-2.2-2.2"/>
+          <path d="M3 12.5h13.5a2.2 2.2 0 1 1-2.2 2.2"/>
+          <path d="M3 17h6.5a2 2 0 1 1-2 2"/>
+        </svg>&ldquo;Running in all directions&rdquo;</h3>
+        <p>Quick, creative, easily scattered. What helps: grounding,
+        warmth, and rhythm.</p>
+        <p class="trad">Ayurveda calls this pattern <em>Vata</em>.</p>
       </div>
       <div class="pattern p2">
-        <h3>&ldquo;Focused and running hot&rdquo;</h3>
-        <p>Driven, sharp, intense. Strong appetite &mdash; for food and for
-        finishing things. What helps most: cooling off and easing up.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3c.5 3.5-4.5 5.5-4.5 10a4.5 4.5 0 0 0 9 0c0-1.8-.8-3.2-1.8-4.4-.2 1.4-.9 2.3-1.9 2.9.4-2.6-.1-6-0.8-8.5z"/>
+        </svg>&ldquo;Focused and running hot&rdquo;</h3>
+        <p>Driven, sharp, intense. What helps: cooling off and easing up.</p>
         <p class="trad">Ayurveda calls this pattern <em>Pitta</em>.</p>
       </div>
       <div class="pattern p3">
-        <h3>&ldquo;Steady, but slow to start&rdquo;</h3>
-        <p>Calm, loyal, unhurried. Deep sleep, even keel, mornings are hard.
-        What helps most: lightness, movement, and a spark.</p>
+        <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="5" r="2.6"/>
+          <path d="M12 7.6V21"/>
+          <path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+        </svg>&ldquo;Steady, but slow to start&rdquo;</h3>
+        <p>Calm, steady, unhurried. What helps: lightness, movement,
+        and a spark.</p>
         <p class="trad">Ayurveda calls this pattern <em>Kapha</em>.</p>
       </div>
     </div>
@@ -300,18 +322,22 @@
     // Testing: append ?hour=8 (etc.) to the URL to preview any time of day.
     var override = new URLSearchParams(location.search).get('hour');
     var h = override !== null ? Number(override) : new Date().getHours();
-    var line =
-      h >= 5 && h < 11  ? 'Morning. Warm water before coffee, remember.' :
-      h >= 11 && h < 17 ? 'Afternoon. Your biggest meal belongs here.' :
-      h >= 17 && h < 22 ? 'Evening. Time to wind down well.' :
-                          'Still up? Ollie is already asleep.';
-    document.getElementById('ollie-speech').textContent = line;
-    // At night, Ollie sleeps in her nest.
-    if (h >= 22 || h < 5) {
-      var img = document.getElementById('ollie-img');
-      img.src = 'ollie_night.png';
-      img.alt = 'Ollie the owl, asleep in her nest under a crescent moon';
-    }
+    var slot =
+      h >= 5 && h < 11  ? ['ollie_morning.png',
+                           'Morning. Warm water before coffee, remember.',
+                           'Ollie the owl, waving good morning under a little sun'] :
+      h >= 11 && h < 17 ? ['ollie.png',
+                           'Afternoon. Your biggest meal belongs here.',
+                           'Ollie the owl, holding a sprig of fresh leaves'] :
+      h >= 17 && h < 22 ? ['ollie_evening.png',
+                           'Evening. Time to wind down well.',
+                           'Ollie the owl, sleepy-eyed under a crescent moon'] :
+                          ['ollie_night.png',
+                           'Still up? Ollie is already asleep.',
+                           'Ollie the owl, asleep in her nest under a crescent moon'];
+    document.getElementById('ollie-speech').textContent = slot[1];
+    var img = document.getElementById('ollie-img');
+    if (!img.src.endsWith(slot[0])) { img.src = slot[0]; img.alt = slot[2]; }
   })();
 </script>
 </body>
