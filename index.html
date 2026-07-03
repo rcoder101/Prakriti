@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OllieWise — Your day has a rhythm. Ollie helps you find it.</title>
+<meta name="description" content="OllieWise is a gentle daily-routine companion. A few quick questions, a personal blueprint in plain words, and small habits that fit how you actually run — rooted in Ayurveda, no jargon required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #FAF6EF;      /* Warm Ivory */
+    --ink: #3A2E28;         /* Deep Bark */
+    --ink-soft: #7A6E68;    /* Bark Light */
+    --sage: #8AAE8F;        /* Sage Mist */
+    --cta: #6A8E6F;         /* Deep Sage */
+    --cta-pressed: #5A795E;
+    --warm: #F9F0DA;        /* turmeric tint */
+    --warm-border: #F8E6B2;
+    --turmeric: #F5C842;
+    --clay: #D4896A;
+    --mauve: #B8A0B4;
+    --vata: #7F77DD;
+    --pitta: #D85A30;
+    --kapha: #8AAE8F;
+    --card: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--cta); }
+  .btn {
+    display: inline-block; background: var(--cta); color: #fff;
+    padding: 12px 26px; border-radius: 999px; text-decoration: none;
+    font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn:hover { background: var(--cta-pressed); }
+  .btn-quiet { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); }
+  .btn-quiet:hover { background: var(--warm); }
+
+  /* Hero */
+  .hero {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px;
+    align-items: center; padding: 48px 0 72px;
+  }
+  .hero h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: 18px; }
+  .hero p.lead { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 28px; max-width: 34em; }
+  .hero .cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .hero .hint { font-size: 0.85rem; color: var(--ink-soft); margin-top: 12px; font-style: italic; }
+  .mascot-card {
+    background: #fff; border-radius: 20px; padding: 28px;
+    box-shadow: 0 8px 40px rgba(58, 46, 40, 0.07);
+    text-align: center;
+  }
+  .mascot-card img { width: 100%; max-width: 260px; height: auto; }
+  .mascot-card .speech {
+    position: relative; display: inline-block; background: var(--warm);
+    border-radius: 16px; padding: 10px 18px; font-style: italic; font-size: 0.95rem;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  /* Tail pointing down at Ollie */
+  .mascot-card .speech::after {
+    content: ''; position: absolute; left: 50%; bottom: -8px;
+    transform: translateX(-50%);
+    border-left: 9px solid transparent; border-right: 9px solid transparent;
+    border-top: 9px solid var(--warm);
+  }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section.alt { background: #fff; }
+  .kicker {
+    text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem;
+    font-weight: 700; color: var(--ink-soft); margin-bottom: 10px;
+  }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 14px; }
+  .section-lead { color: var(--ink-soft); max-width: 42em; margin-bottom: 40px; }
+
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step {
+    background: var(--card); border-radius: 20px; padding: 26px;
+    box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05);
+  }
+  section.alt .step { background: var(--canvas); }
+  .step .num {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--warm);
+    display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px;
+  }
+  .step h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .step p { font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* Plain words */
+  .patterns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  .pattern {
+    border-radius: 20px; padding: 26px; background: var(--card);
+    box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05);
+  }
+  .pattern.p1 { border-top: 4px solid var(--vata); }
+  .pattern.p2 { border-top: 4px solid var(--pitta); }
+  .pattern.p3 { border-top: 4px solid var(--kapha); }
+  .pattern h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .pattern p { font-size: 0.95rem; color: var(--ink-soft); }
+  .pattern .trad {
+    margin-top: 14px; font-size: 0.8rem; color: var(--ink-soft);
+    border-top: 1px dashed var(--warm-border); padding-top: 10px;
+  }
+  .pattern .trad em { color: var(--ink); font-style: normal; font-weight: 700; }
+
+  /* Waitlist */
+  .waitlist-box {
+    background: var(--warm);
+    border-radius: 20px; padding: 48px 32px; text-align: center;
+  }
+  .waitlist-box h2 { margin-bottom: 10px; }
+  .waitlist-box p { color: var(--ink-soft); margin-bottom: 26px; }
+  .waitlist-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .waitlist-form input[type="email"] {
+    padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--warm-border);
+    font-size: 1rem; font-family: inherit; min-width: 280px; background: #fff;
+    color: var(--ink);
+  }
+  .waitlist-form input[type="email"]:focus { outline: 2px solid var(--sage); border-color: var(--sage); }
+  .form-note { font-size: 0.8rem; color: var(--ink-soft); margin-top: 14px; }
+
+  /* Footer */
+  footer { padding: 48px 0 40px; font-size: 0.85rem; color: var(--ink-soft); }
+  footer .disclaimer {
+    background: #fff; border-radius: 20px;
+    padding: 18px 22px; margin-bottom: 24px; max-width: 56em;
+  }
+  footer .links { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; }
+  footer a { color: var(--cta); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 24px 0 48px; }
+    .mascot-card { order: -1; max-width: 320px; margin: 0 auto; }
+    .steps, .patterns { grid-template-columns: 1fr; }
+    section { padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="wordmark" href="#">Ollie<span>Wise</span></a>
+    <a class="btn" href="#waitlist">Join the waitlist</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Your day has a rhythm.<br>Ollie helps you find it.</h1>
+      <p class="lead">
+        OllieWise is a gentle daily-routine companion. A few quick questions,
+        a personal blueprint in plain words, and small habits that fit how you
+        actually run &mdash; your energy, your digestion, your sleep.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="#waitlist">Join the waitlist</a>
+        <a class="btn btn-quiet" href="#how">How it works</a>
+      </div>
+      <p class="hint">Rooted in Ayurveda. Spoken in plain English.</p>
+    </div>
+    <div class="mascot-card">
+      <div class="speech" id="ollie-speech">Evening. Time to wind down well.</div>
+      <img src="ollie.png" alt="Ollie the owl, holding a sprig of fresh leaves">
+    </div>
+  </header>
+</div>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>Three small steps, then a little every day</h2>
+    <p class="section-lead">
+      No hour-long intake forms. OllieWise asks the fewest questions it can,
+      learns as you go, and never asks for more of your morning than you said
+      you have.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Say hello</h3>
+        <p>A handful of friendly questions about your energy, appetite, and
+        sleep &mdash; and you get your first two habits the same day.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Meet your blueprint</h3>
+        <p>A short check-in a couple of days later completes your picture:
+        your natural constitution, how your digestion is doing, and what
+        needs attention first &mdash; described in words you already know.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Live your rhythm</h3>
+        <p>Small daily habits, gentle check-ins, and a weekly pulse on how
+        you're trending. Habits unlock as your streak builds &mdash; never
+        a wall of tasks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">Plain words first</p>
+    <h2>You shouldn't need a glossary to understand yourself</h2>
+    <p class="section-lead">
+      Ayurveda has beautiful, precise names for the patterns it describes.
+      We teach them gently, once you've already recognised yourself in plain
+      English. Here's how Ollie might describe a day:
+    </p>
+    <div class="patterns">
+      <div class="pattern p1">
+        <h3>&ldquo;Running in all directions&rdquo;</h3>
+        <p>Quick, creative, easily scattered. Bursts of energy, then a crash.
+        What helps most: grounding, warmth, and rhythm.</p>
+        <p class="trad">Ayurveda calls this pattern <em>Vata</em> &mdash;
+        you'll learn the name when you're ready for it.</p>
+      </div>
+      <div class="pattern p2">
+        <h3>&ldquo;Focused and running hot&rdquo;</h3>
+        <p>Driven, sharp, intense. Strong appetite &mdash; for food and for
+        finishing things. What helps most: cooling off and easing up.</p>
+        <p class="trad">Ayurveda calls this pattern <em>Pitta</em>.</p>
+      </div>
+      <div class="pattern p3">
+        <h3>&ldquo;Steady, but slow to start&rdquo;</h3>
+        <p>Calm, loyal, unhurried. Deep sleep, even keel, mornings are hard.
+        What helps most: lightness, movement, and a spark.</p>
+        <p class="trad">Ayurveda calls this pattern <em>Kapha</em>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="waitlist">
+  <div class="wrap">
+    <div class="waitlist-box">
+      <h2>Be first in the nest</h2>
+      <p>We're welcoming a small group of early users soon. Leave your email
+      and Ollie will hoot when it's your turn.</p>
+      <!-- TODO: point action at your form backend (Formspree, Buttondown,
+           Mailchimp, etc.) before launch. It currently goes nowhere. -->
+      <form class="waitlist-form" action="#" method="post"
+            onsubmit="alert('Waitlist backend not wired up yet.'); return false;">
+        <input type="email" name="email" placeholder="you@example.com"
+               required aria-label="Email address">
+        <button class="btn" type="submit">Count me in</button>
+      </form>
+      <p class="form-note">No spam, no sharing your address. Just one email
+      when the doors open.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="disclaimer">
+      <strong>A gentle note:</strong> OllieWise offers general wellness and
+      lifestyle guidance inspired by Ayurvedic tradition. It is not a medical
+      device and does not diagnose, treat, or cure any condition &mdash; and
+      it's never a substitute for advice from your doctor or qualified health
+      professional.
+    </div>
+    <div class="links">
+      <a href="mailto:hello@olliewise.com">Contact</a>
+      <!-- TODO: create these pages before app-store submission -->
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of use</a>
+    </div>
+    <p>&copy; 2026 OllieWise. Made with warm water and patience.</p>
+  </div>
+</footer>
+
+<script>
+  // Ollie greets by time of day, echoing the in-app dinacharya voice.
+  (function () {
+    // Testing: append ?hour=8 (etc.) to the URL to preview any time of day.
+    var override = new URLSearchParams(location.search).get('hour');
+    var h = override !== null ? Number(override) : new Date().getHours();
+    var line =
+      h >= 5 && h < 11  ? 'Morning. Warm water before coffee, remember.' :
+      h >= 11 && h < 17 ? 'Afternoon. Your biggest meal belongs here.' :
+      h >= 17 && h < 22 ? 'Evening. Time to wind down well.' :
+                          'Still up? Ollie is already asleep.';
+    document.getElementById('ollie-speech').textContent = line;
+  })();
+</script>
+</body>
+</html>
