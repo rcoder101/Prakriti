@@ -1,9 +1,20 @@
 {
   "name": "prakriti",
   "compatibility_date": "2026-07-02",
-  "assets": { "directory": "./" },
+  "main": "worker.js",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS"
+  },
   "routes": [
     { "pattern": "olliewise.com", "custom_domain": true },
     { "pattern": "www.olliewise.com", "custom_domain": true }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "olliewise-waitlist",
+      "database_id": "b4320241-ba60-49d9-b52c-8b34d2efadb9"
+    }
   ]
 }

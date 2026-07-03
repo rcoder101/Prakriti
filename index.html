@@ -283,16 +283,17 @@
       <h2>Be first in the nest</h2>
       <p>We're welcoming a small group of early users soon. Leave your email
       and Ollie will hoot when it's your turn.</p>
-      <!-- TODO: point action at your form backend (Formspree, Buttondown,
-           Mailchimp, etc.) before launch. It currently goes nowhere. -->
-      <form class="waitlist-form" action="#" method="post"
-            onsubmit="alert('Waitlist backend not wired up yet.'); return false;">
+      <form class="waitlist-form" id="waitlist-form"
+            action="/api/waitlist" method="post">
         <input type="email" name="email" placeholder="you@example.com"
                required aria-label="Email address">
+        <!-- Honeypot: hidden from humans, irresistible to bots -->
+        <input type="text" name="nickname" tabindex="-1" autocomplete="off"
+               style="position:absolute; left:-9999px;" aria-hidden="true">
         <button class="btn" type="submit">Count me in</button>
       </form>
-      <p class="form-note">No spam, no sharing your address. Just one email
-      when the doors open.</p>
+      <p class="form-note" id="waitlist-note">No spam, no sharing your address.
+      Just one email when the doors open.</p>
     </div>
   </div>
 </section>
@@ -336,6 +337,29 @@
                            'Still up? Ollie is already asleep.',
                            'Ollie the owl, asleep in her nest under a crescent moon'];
     document.getElementById('ollie-speech').textContent = slot[1];
+
+    // Waitlist: submit via fetch, thank inline instead of redirecting.
+    var form = document.getElementById('waitlist-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      btn.disabled = true; btn.textContent = 'One moment…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (r) {
+        if (r.ok) {
+          form.style.display = 'none';
+          document.getElementById('waitlist-note').textContent =
+            "You're in the nest. Ollie will hoot when it's your turn.";
+        } else { throw new Error(); }
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = 'Count me in';
+        document.getElementById('waitlist-note').textContent =
+          'Hmm, that didn’t go through. Please try again in a moment.';
+      });
+    });
     var img = document.getElementById('ollie-img');
     if (!img.src.endsWith(slot[0])) { img.src = slot[0]; img.alt = slot[2]; }
   })();
