@@ -28,7 +28,7 @@ const WELCOME_HTML = `
 
 async function sendWelcome(env, email) {
   try {
-    await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${env.RESEND_API_KEY}`,
@@ -41,8 +41,10 @@ async function sendWelcome(env, email) {
         html: WELCOME_HTML,
       }),
     });
+    console.log('resend status:', res.status, await res.text());
   } catch (e) {
     // Never let a failed email break the signup itself.
+    console.log('resend error:', String(e));
   }
 }
 
@@ -87,6 +89,8 @@ export default {
       }
       // Welcome email only on first signup (not on repeat submissions),
       // sent after the response so the visitor never waits on it.
+      console.log('signup:', email, 'inserted:', inserted,
+        'key present:', Boolean(env.RESEND_API_KEY));
       if (inserted && env.RESEND_API_KEY) {
         ctx.waitUntil(sendWelcome(env, email));
       }
