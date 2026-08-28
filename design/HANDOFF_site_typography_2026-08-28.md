@@ -21,7 +21,7 @@ Unlike a typical handoff, this bundle is **not** a set of design references to r
 
 | File | Change |
 | --- | --- |
-| `index.html` | Font link, body font stack, form-control font reset, body line-height, text rendering |
+| `index.html` | Font link, body font stack, form-control font reset, body line-height, text rendering, tab title + og tags |
 | `privacy.html` | Font link, body font stack, body font-size, `.wrap` measure, `h2` weight and spacing |
 | `terms.html` | Same as privacy.html |
 
@@ -132,6 +132,28 @@ Plus Jakarta Sans is a geometric, display-leaning face with a slightly smaller x
 ```css
   h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 500; margin: 40px 0 10px; letter-spacing: -0.01em; }
 ```
+
+### 8. Tab title and social preview (`index.html`) — tagline placement
+
+The tagline "At home in yourself" was decided in August 2026. It is placed where identity is the job, and deliberately NOT in the page body: the hero headline "Your day has a rhythm. Ollie helps you find it." was tested with real users and stays exactly as it is. Nothing a visitor reads on the page changes.
+
+**Before:**
+```html
+<title>OllieWise | Your day has a rhythm. Ollie helps you find it.</title>
+<meta name="description" content="OllieWise is a daily-routine companion. …">
+```
+
+**After:**
+```html
+<title>OllieWise · At home in yourself</title>
+<meta name="description" content="OllieWise is a daily-routine companion. …">
+<meta property="og:title" content="OllieWise · At home in yourself">
+<meta property="og:description" content="Your day has a rhythm. Ollie helps you find it.">
+```
+
+The `description` meta is unchanged. In a shared-link preview the tagline is the card title and the tested hero line is the description, so the tagline introduces and the hero converts.
+
+Note the separator is a middot, not a hyphen: the brand rule forbids dashes and hyphen-as-punctuation in user-facing copy.
 
 ## Design tokens
 
