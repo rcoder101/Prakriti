@@ -1,0 +1,94 @@
+/* OllieWise Design System v1.0 — canonical tokens
+   Source of truth: flutter/lib/theme/app_theme.dart (app) + olliewise.com (web).
+   Six colors form the palette. Everything else is one of the six tinted
+   toward Warm Ivory, or pure white. No ad-hoc colors. */
+
+:root {
+  /* ── Core palette ─────────────────────────────────────── */
+  --ow-ivory:        #FAF6EF; /* canvas, card fill. never pure white */
+  --ow-sage:         #8AAE8F; /* primary: leaf, progress, active */
+  --ow-turmeric:     #F5C842; /* highlights, eye shine, energy */
+  --ow-clay:         #D4896A; /* plumage, warmth, safe mode */
+  --ow-mauve:        #B8A0B4; /* evening, wind-down, rest */
+  --ow-bark:         #3A2E28; /* text, headlines, icons, borders */
+  --ow-bark-light:   #7A6E68; /* web secondary text; decorative in app */
+
+  /* ── Functional ───────────────────────────────────────── */
+  --ow-cta:          #6A8E6F;
+  --ow-cta-pressed:  #5A795E;
+  --ow-surface:      #E9EBE1; /* sage tint 15% */
+  --ow-border:       #E7E2DB; /* bark tint 10% */
+  --ow-disabled:     #CAC4BD; /* bark tint 25% */
+  --ow-white:        #FFFFFF;
+
+  --ow-ollie-bg:     #F9F0DA; /* Ollie speaks */
+  --ow-ollie-border: #F8E6B2;
+  --ow-rest-bg:      #F2ECE8; /* wind-down sign-off */
+  --ow-rest-border:  #E3D8DA;
+
+  /* Day 3 paths + chapters */
+  --ow-path-a-bg:    #F4E6DB;
+  --ow-path-a-line:  #D4896A;
+  --ow-path-b-bg:    #E9EBE1;
+  --ow-path-b-line:  #8AAE8F;
+  --ow-chapter-1:    #F0E9E6;
+  --ow-chapter-2:    #E9EBE1;
+  --ow-chapter-3:    #F9EFD5;
+
+  /* ── Scoped data colors. One chart each, never decoration ── */
+  --ow-vata:         #7F77DD; /* blueprint reveal only */
+  --ow-pitta:        #D85A30;
+  --ow-kapha:        #1D9E75;
+  --ow-agni-sama:    #256201; /* weekly agni strip only */
+  --ow-agni-manda:   #01946B;
+  --ow-nostril-l:    #4E7CA1; /* paced breathing only */
+  --ow-nostril-r:    #C0564B;
+
+  /* ── Type ─────────────────────────────────────────────── */
+  /* One face, everywhere. The face IS the brand. */
+  --ow-font: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
+
+  --ow-text-hero:    50px; /* display 700, ls -.03em, lh 1.05 */
+  --ow-text-h2:      34px; /* display 600, ls -.02em, lh 1.2  */
+  --ow-text-lede:    19px;
+  --ow-text-title:   17px; /* display 600 */
+  --ow-text-body:    17px; /* web base, lh 1.6 */
+  --ow-text-small:   15px;
+  --ow-text-caption: 14px;
+  --ow-text-eyebrow: 12px; /* 700, caps, ls .16em */
+
+  /* ── Shape, space, elevation ──────────────────────────── */
+  --ow-r-btn-app:    8px;
+  --ow-r-option:     10px;
+  --ow-r-tile:       14px;
+  --ow-r-card:       20px;  /* web */
+  --ow-r-pill:       999px; /* web buttons only */
+
+  --ow-space-1:      4px;
+  --ow-space-2:      8px;
+  --ow-space-3:      12px;
+  --ow-space-4:      16px; /* app gutter */
+  --ow-space-6:      24px;
+  --ow-space-10:     40px;
+  --ow-space-18:     72px; /* web section */
+
+  --ow-shadow-card:  0 8px 40px rgba(58, 46, 40, 0.07);
+  --ow-shadow-tile:  0 6px 24px rgba(58, 46, 40, 0.05);
+  --ow-touch-min:    44px;
+}
+
+/* ── Constitution themes. Five tokens vary, nothing else.
+   Apply on <html> or a container: <body data-ow-theme="pitta">        */
+
+[data-ow-theme="vata"] {
+  --ow-ivory: #F3EEEE; --ow-surface: #EBE7ED;
+  --ow-cta: #7F77DD; --ow-cta-pressed: #534AB7; --ow-sage: #7F77DD;
+}
+[data-ow-theme="pitta"] {
+  --ow-ivory: #F8EDE4; --ow-surface: #F6E3D8;
+  --ow-cta: #D85A30; --ow-cta-pressed: #993C1D; --ow-sage: #D85A30;
+}
+[data-ow-theme="kapha"] {
+  --ow-ivory: #EDF1E8; --ow-surface: #E0EBE0;
+  --ow-cta: #1D9E75; --ow-cta-pressed: #0F6E56; --ow-sage: #1D9E75;
+}
