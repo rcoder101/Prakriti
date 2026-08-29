@@ -2,3 +2,5 @@
 .assetsignore
 wrangler.jsonc
 worker.js
+design
+masters
