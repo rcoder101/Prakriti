@@ -1,6 +1,10 @@
 .git
+.gitignore
+.wrangler
 .assetsignore
 wrangler.jsonc
 worker.js
+README.md
 design
 masters
+_to_delete
