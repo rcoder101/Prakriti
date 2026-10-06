@@ -337,13 +337,6 @@
   }
   .phone-choice input:checked + span { background: #E9EBE1; border-color: var(--cta); font-weight: 700; }
   .phone-choice input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 2px; }
-  .email-domains { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: -4px; }
-  .email-domains[hidden] { display: none; }
-  .email-domains button {
-    padding: 8px 14px; min-height: 36px; border-radius: 999px; border: 1px solid var(--warm-border);
-    background: #fff; color: var(--ink); font-size: 0.85rem; cursor: pointer;
-  }
-  .email-domains button:hover { border-color: var(--sage); }
   .waitlist-form input[type="email"] {
     padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--warm-border);
     font-size: 1rem; font-family: inherit; min-width: 280px; background: #fff;
@@ -367,11 +360,9 @@
     .mascot-card { order: -1; max-width: 300px; margin: 0 auto; padding: 20px; }
     .mascot-card img#ollie-img, .ollie-stage { max-width: 168px; }
     .steps, .patterns, .trust { grid-template-columns: 1fr; }
-    /* Waitlist on a phone: email, then the one tap endings, then the button */
+    /* Waitlist on a phone: the email box takes the full width, button under it */
     .email-row { display: contents; }
-    #waitlist-email { order: 1; width: 100%; min-width: 0; }
-    .email-domains { order: 2; margin-top: -6px; }
-    .email-row .btn { order: 3; }
+    #waitlist-email { width: 100%; min-width: 0; }
     .how-grid { grid-template-columns: 1fr; gap: 32px; }
     .app-shot { order: -1; }
     .about-story { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -621,14 +612,6 @@
                  style="position:absolute; left:-9999px;" aria-hidden="true">
           <button class="btn" type="submit">Count me in</button>
         </div>
-        <!-- One tap endings for the email address. Shown once typing starts. -->
-        <div class="email-domains" id="email-domains" hidden>
-          <button type="button">@gmail.com</button>
-          <button type="button">@yahoo.com</button>
-          <button type="button">@icloud.com</button>
-          <button type="button">@outlook.com</button>
-          <button type="button">@hotmail.com</button>
-        </div>
       </form>
       <p class="form-note" id="waitlist-note">No spam, no sharing your address.
       Just one email when the doors open.</p>
@@ -677,38 +660,6 @@
 
     // Waitlist: submit via fetch, thank inline instead of redirecting.
     var form = document.getElementById('waitlist-form');
-
-    // One tap endings for the email address (@gmail.com and friends).
-    (function () {
-      var input = document.getElementById('waitlist-email');
-      var box = document.getElementById('email-domains');
-      if (!input || !box) return;
-      var chips = [].slice.call(box.querySelectorAll('button'));
-      function refresh() {
-        var v = input.value.trim();
-        var at = v.indexOf('@');
-        var local = at < 0 ? v : v.slice(0, at);
-        var typed = at < 0 ? '' : v.slice(at).toLowerCase();
-        var done = /@[^@\s]+\.[a-z]{2,}$/i.test(v);
-        var any = false;
-        chips.forEach(function (c) {
-          var show = !!local && !done && c.textContent.indexOf(typed) === 0;
-          c.hidden = !show;
-          if (show) any = true;
-        });
-        box.hidden = !any;
-      }
-      input.addEventListener('input', refresh);
-      chips.forEach(function (c) {
-        c.addEventListener('click', function () {
-          var v = input.value.trim();
-          var at = v.indexOf('@');
-          input.value = (at < 0 ? v : v.slice(0, at)) + c.textContent;
-          box.hidden = true;
-          input.focus();
-        });
-      });
-    })();
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
