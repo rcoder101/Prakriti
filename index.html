@@ -63,15 +63,17 @@
 
   /* Hero */
   .hero {
-    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px;
     align-items: center; padding: 48px 0 72px;
   }
-  .hero h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.5rem, 5vw, 3.125rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; text-wrap: balance; }
   .hero p.lead { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 28px; max-width: 34em; }
-  .hero p.lead.why { font-size: 1.3rem; font-weight: 500; color: var(--ink); line-height: 1.45; margin-bottom: 12px; }
-  .hero p.lead.get { margin-bottom: 28px; }
+  /* Each sentence sits on a line of its own, so no line ends on a stray word */
+  .hero p.lead span { display: block; text-wrap: balance; }
+  .hero p.lead.why { font-size: 1.25rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 14px; }
+  .hero p.lead.get { font-size: 1.0625rem; line-height: 1.55; margin-bottom: 32px; }
   .hero .cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-  .hero .hint { font-size: 0.85rem; color: var(--ink-soft); margin-top: 12px; font-style: italic; }
+  .hero .hint { font-size: 0.85rem; color: var(--ink-soft); margin-top: 18px; font-style: italic; }
   .mascot-card {
     background: #fff; border-radius: 20px; padding: 28px;
     box-shadow: 0 8px 40px rgba(58, 46, 40, 0.07);
@@ -241,8 +243,9 @@
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; padding: 24px 0 48px; }
-    .mascot-card { order: -1; max-width: 320px; margin: 0 auto; }
+    .hero { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 48px; }
+    .mascot-card { order: -1; max-width: 300px; margin: 0 auto; padding: 20px; }
+    .mascot-card img#ollie-img, .ollie-stage { max-width: 168px; }
     .steps, .patterns { grid-template-columns: 1fr; }
     section { padding: 48px 0; }
   }
@@ -259,8 +262,8 @@
   <header class="hero">
     <div>
       <h1>At home in yourself.</h1>
-      <p class="lead why">The wisdom is already in you. OllieWise helps you hear it.</p>
-      <p class="lead get">Better digestion, deeper sleep, a calmer mind. One small habit at a time.</p>
+      <p class="lead why"><span>The wisdom is already in you.</span> <span>OllieWise helps you hear it.</span></p>
+      <p class="lead get"><span>Better digestion, deeper sleep, a calmer mind.</span> <span>One small habit at a time.</span></p>
       <div class="cta-row">
         <a class="btn" href="#waitlist">Join the waitlist</a>
         <a class="btn btn-quiet" href="#how">How it works</a>
