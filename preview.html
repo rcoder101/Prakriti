@@ -324,7 +324,26 @@
   }
   .waitlist-box h2 { margin-bottom: 10px; }
   .waitlist-box p { color: var(--ink-soft); margin-bottom: 26px; }
-  .waitlist-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .waitlist-form { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .email-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .phone-choice { border: 0; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .phone-choice legend { float: left; width: auto; font-size: 0.95rem; color: var(--ink); margin-right: 4px; }
+  .phone-choice label { cursor: pointer; }
+  .phone-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .phone-choice span {
+    display: inline-block; min-width: 96px; padding: 10px 20px; border-radius: 999px;
+    border: 1.5px solid var(--warm-border); background: #fff; color: var(--ink);
+    font-size: 0.95rem; font-weight: 500; transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .phone-choice input:checked + span { background: #E9EBE1; border-color: var(--cta); font-weight: 700; }
+  .phone-choice input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 2px; }
+  .email-domains { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: -4px; }
+  .email-domains[hidden] { display: none; }
+  .email-domains button {
+    padding: 8px 14px; min-height: 36px; border-radius: 999px; border: 1px solid var(--warm-border);
+    background: #fff; color: var(--ink); font-size: 0.85rem; cursor: pointer;
+  }
+  .email-domains button:hover { border-color: var(--sage); }
   .waitlist-form input[type="email"] {
     padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--warm-border);
     font-size: 1rem; font-family: inherit; min-width: 280px; background: #fff;
@@ -348,6 +367,11 @@
     .mascot-card { order: -1; max-width: 300px; margin: 0 auto; padding: 20px; }
     .mascot-card img#ollie-img, .ollie-stage { max-width: 168px; }
     .steps, .patterns, .trust { grid-template-columns: 1fr; }
+    /* Waitlist on a phone: email, then the one tap endings, then the button */
+    .email-row { display: contents; }
+    #waitlist-email { order: 1; width: 100%; min-width: 0; }
+    .email-domains { order: 2; margin-top: -6px; }
+    .email-row .btn { order: 3; }
     .how-grid { grid-template-columns: 1fr; gap: 32px; }
     .app-shot { order: -1; }
     .about-story { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -578,16 +602,33 @@
   <div class="wrap">
     <div class="waitlist-box">
       <h2 id="waitlist-title">Be first in the nest</h2>
-      <p id="waitlist-lead">We're welcoming a small group of early users soon.
-      Leave your email and Ollie will hoot when it's your turn.</p>
+      <p id="waitlist-lead">OllieWise is an app for iPhone, with Android to follow.
+      We're welcoming a small group of early users soon. Leave your email and
+      Ollie will hoot when it's your turn.</p>
       <form class="waitlist-form" id="waitlist-form"
             action="/api/waitlist" method="post">
-        <input type="email" name="email" placeholder="you@example.com"
-               required aria-label="Email address">
-        <!-- Honeypot: hidden from humans, irresistible to bots -->
-        <input type="text" name="nickname" tabindex="-1" autocomplete="off"
-               style="position:absolute; left:-9999px;" aria-hidden="true">
-        <button class="btn" type="submit">Count me in</button>
+        <fieldset class="phone-choice">
+          <legend>Which phone do you use?</legend>
+          <label><input type="radio" name="phone" value="iphone" required><span>iPhone</span></label>
+          <label><input type="radio" name="phone" value="android"><span>Android</span></label>
+        </fieldset>
+        <div class="email-row">
+          <input type="email" name="email" id="waitlist-email" placeholder="you@example.com"
+                 required aria-label="Email address" autocomplete="email" inputmode="email"
+                 autocapitalize="off" autocorrect="off" spellcheck="false">
+          <!-- Honeypot: hidden from humans, irresistible to bots -->
+          <input type="text" name="nickname" tabindex="-1" autocomplete="off"
+                 style="position:absolute; left:-9999px;" aria-hidden="true">
+          <button class="btn" type="submit">Count me in</button>
+        </div>
+        <!-- One tap endings for the email address. Shown once typing starts. -->
+        <div class="email-domains" id="email-domains" hidden>
+          <button type="button">@gmail.com</button>
+          <button type="button">@yahoo.com</button>
+          <button type="button">@icloud.com</button>
+          <button type="button">@outlook.com</button>
+          <button type="button">@hotmail.com</button>
+        </div>
       </form>
       <p class="form-note" id="waitlist-note">No spam, no sharing your address.
       Just one email when the doors open.</p>
@@ -636,6 +677,39 @@
 
     // Waitlist: submit via fetch, thank inline instead of redirecting.
     var form = document.getElementById('waitlist-form');
+
+    // One tap endings for the email address (@gmail.com and friends).
+    (function () {
+      var input = document.getElementById('waitlist-email');
+      var box = document.getElementById('email-domains');
+      if (!input || !box) return;
+      var chips = [].slice.call(box.querySelectorAll('button'));
+      function refresh() {
+        var v = input.value.trim();
+        var at = v.indexOf('@');
+        var local = at < 0 ? v : v.slice(0, at);
+        var typed = at < 0 ? '' : v.slice(at).toLowerCase();
+        var done = /@[^@\s]+\.[a-z]{2,}$/i.test(v);
+        var any = false;
+        chips.forEach(function (c) {
+          var show = !!local && !done && c.textContent.indexOf(typed) === 0;
+          c.hidden = !show;
+          if (show) any = true;
+        });
+        box.hidden = !any;
+      }
+      input.addEventListener('input', refresh);
+      chips.forEach(function (c) {
+        c.addEventListener('click', function () {
+          var v = input.value.trim();
+          var at = v.indexOf('@');
+          input.value = (at < 0 ? v : v.slice(0, at)) + c.textContent;
+          box.hidden = true;
+          input.focus();
+        });
+      });
+    })();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('button');

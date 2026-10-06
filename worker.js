@@ -1,5 +1,5 @@
 // OllieWise.com worker: serves the static site and handles waitlist signups.
-// POST /api/waitlist  { email }  ->  stored in D1 (binding: DB), welcome
+// POST /api/waitlist  { email, phone? }  ->  stored in D1 (binding: DB), welcome
 // email sent via Resend (secret: RESEND_API_KEY).
 
 const WELCOME_FROM = 'Ollie at OllieWise <hello@olliewise.com>';
@@ -59,10 +59,12 @@ export default {
 
     if (url.pathname === '/api/waitlist' && request.method === 'POST') {
       let email = '';
+      let phone = '';
       let honeypot = '';
       try {
         const form = await request.formData();
         email = String(form.get('email') || '').trim().toLowerCase();
+        phone = String(form.get('phone') || '').trim().toLowerCase();
         honeypot = String(form.get('nickname') || '');
       } catch {
         return json(400, { ok: false, error: 'bad request' });
@@ -76,6 +78,9 @@ export default {
         return json(400, { ok: false, error: 'invalid email' });
       }
 
+      // Which phone they use is optional and only ever one of two values.
+      if (phone !== 'iphone' && phone !== 'android') phone = '';
+
       let inserted = false;
       try {
         const res = await env.DB.prepare(
@@ -84,6 +89,23 @@ export default {
         inserted = res.meta.changes > 0;
       } catch (e) {
         return json(500, { ok: false, error: 'storage error' });
+      }
+      // The phone is saved in a second step, so a problem here can never
+      // lose a signup. The column is added the first time it is needed.
+      if (phone) {
+        const savePhone = () => env.DB.prepare(
+          "UPDATE waitlist SET phone = ? WHERE email = ? AND (phone IS NULL OR phone = '')"
+        ).bind(phone, email).run();
+        try {
+          await savePhone();
+        } catch (e) {
+          try {
+            await env.DB.prepare('ALTER TABLE waitlist ADD COLUMN phone TEXT').run();
+            await savePhone();
+          } catch (e2) {
+            // Leave the signup as it is: email saved, phone not recorded.
+          }
+        }
       }
       // Welcome email only on first signup (not on repeat submissions),
       // sent after the response so the visitor never waits on it.
