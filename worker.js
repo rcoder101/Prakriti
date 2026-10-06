@@ -7,21 +7,20 @@ const WELCOME_SUBJECT = "You're in the nest";
 const WELCOME_HTML = `
 <div style="background:#FAF6EF; padding:32px 16px; font-family:-apple-system,'Segoe UI',sans-serif; color:#3A2E28;">
   <div style="max-width:520px; margin:0 auto; background:#ffffff; border-radius:20px; padding:32px;">
-    <h1 style="font-size:22px; margin:0 0 16px;">You're in the nest 🪺</h1>
+    <h1 style="font-size:22px; margin:0 0 16px;">You're in the nest</h1>
     <p style="line-height:1.6; margin:0 0 14px;">
-      Thanks for joining the OllieWise waitlist. We're welcoming a small
+      Thank you for joining the OllieWise waitlist. We're welcoming a small
       group of early users soon, and you're on the list. Ollie will hoot
-      the moment it's your turn.
+      when it's your turn.
     </p>
     <p style="line-height:1.6; margin:0 0 14px;">
-      Until then, one small thing you can start tomorrow: a glass of warm
-      water when you wake, 45 minutes before your coffee. It's the first
-      habit Ollie gives almost everyone.
+      Until then, here is one small habit to start tomorrow: drink warm
+      water first thing when you wake. Warm, not hot.
     </p>
-    <p style="line-height:1.6; margin:0 0 20px;">Talk soon,<br>Ollie 🦉</p>
+    <p style="line-height:1.6; margin:0 0 20px;">Talk soon,<br>Ollie</p>
     <p style="font-size:12px; color:#7A6E68; margin:0;">
-      You'll get one email when the doors open, and that's it. To leave
-      the nest, just reply and say so.
+      You'll get one email when the doors open, and no others. To leave
+      the nest, reply and say so.
     </p>
   </div>
 </div>`;
