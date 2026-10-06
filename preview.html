@@ -281,6 +281,8 @@
     border-top: 1px dashed var(--warm-border);
   }
   #built .pattern { align-items: center; text-align: center; }
+  #built h2, #built .section-lead { text-align: center; }
+  #built .section-lead { margin-left: auto; margin-right: auto; }
   .pattern-ollie { height: 120px; width: auto; margin-bottom: 14px; }
   #built .pattern .trad { align-self: stretch; }
   #built .patterns-close { text-align: center; }
@@ -377,7 +379,7 @@
     <div class="mascot-card">
       <div class="speech" id="ollie-speech">Evening. Time to wind down well.</div>
       <div class="ollie-stage" id="ollie-stage">
-        <img src="ollie.png" id="ollie-img" alt="Ollie the owl, with a green leaf on top of the head">
+        <img src="ollie_clean.png" id="ollie-img" alt="Ollie the owl, with a green leaf on top of the head">
         <img src="ollie_wing.png?v=6" id="ollie-wing" alt="" aria-hidden="true">
         <svg id="ollie-sun" viewBox="0 0 100 100" aria-hidden="true">
           <g class="rays">
@@ -572,7 +574,7 @@
   </div>
 </section>
 
-<section class="alt" id="waitlist">
+<section id="waitlist">
   <div class="wrap">
     <div class="waitlist-box">
       <h2 id="waitlist-title">Be first in the nest</h2>
@@ -621,7 +623,7 @@
       h >= 5 && h < 11  ? ['ollie_morning_base.png?v=6',
                            'Morning. Warm water before coffee, remember.',
                            'Ollie the owl, waving good morning under a little sun'] :
-      h >= 11 && h < 17 ? ['ollie.png',
+      h >= 11 && h < 17 ? ['ollie_clean.png',
                            'Afternoon. Your biggest meal belongs here.',
                            'Ollie the owl, with a green leaf on top of the head'] :
       h >= 17 && h < 22 ? ['ollie_evening.png',
@@ -668,7 +670,7 @@
     // {l,t,w,h} = left, top, width, height. Evening/night = no blink (sleepy).
     var EYES = {
       'ollie_morning_base.png?v=6': [ {l:16.5,t:27,w:22,h:20}, {l:45,t:25,w:20,h:20} ],
-      'ollie.png':                 [ {l:23,t:26,w:25,h:20}, {l:58,t:24,w:23.5,h:20} ],
+      'ollie_clean.png':                 [ {l:23,t:26,w:25,h:20}, {l:58,t:24,w:23.5,h:20} ],
       'ollie_evening.png':         [ {l:33,t:41.5,w:15,h:9.5}, {l:55.5,t:40.5,w:13.5,h:9.5} ]
     };
     var stage = document.getElementById('ollie-stage');
@@ -719,7 +721,7 @@
     // Morning gets the waving wing + crisp sun overlays.
     var isMorning = slot[0] === 'ollie_morning_base.png?v=6';
     stage.classList.toggle('is-morning', isMorning);
-    stage.classList.toggle('is-afternoon', slot[0] === 'ollie.png');
+    stage.classList.toggle('is-afternoon', slot[0] === 'ollie_clean.png');
     stage.classList.toggle('is-night', slot[0] === 'ollie_night_base.png?v=1');
     clearTimeout(waveTimer);
     if (isMorning && !reduce) scheduleWave();
