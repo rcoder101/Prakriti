@@ -298,7 +298,10 @@
     background: var(--canvas); border-radius: 20px; padding: 28px;
     box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05); text-align: center; line-height: 0;
   }
-  .about-ollie img { width: 100%; max-width: 190px; height: auto; }
+  .about-stage { position: relative; display: inline-block; width: 100%; max-width: 190px; line-height: 0; }
+  .about-stage img { width: 100%; height: auto; }
+  .about-stage .eyelid { display: block; }
+  .about-stage.blink .eyelid { transform: scaleY(1); }
   .about-story p { color: var(--ink); max-width: 32em; text-wrap: pretty; }
   .about h3.trust-title { margin-bottom: 18px; }
   .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -347,7 +350,7 @@
     .app-shot { order: -1; }
     .about-story { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
     .about-ollie { max-width: 300px; width: 100%; margin: 0 auto; padding: 20px; }
-    .about-ollie img { max-width: 150px; }
+    .about-stage { max-width: 150px; }
     section { padding: 48px 0; }
   }
 </style>
@@ -437,7 +440,7 @@
           <path d="M15.5 3.5V7H19"/>
           <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3.5"/>
         </svg>Ollie meets you</h3>
-        <p>Your blueprint tells how you are built, and where to begin.</p>
+        <p>Ollie gets to know how you are built, and how you are now. Your habits begin now.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
@@ -524,13 +527,18 @@
     <div class="about-story">
       <!-- Daytime Ollie, eyes open. To change the pose, change the src below. -->
       <div class="about-ollie">
-        <img src="ollie_clean.png" id="about-ollie-img" alt="Ollie the owl" loading="lazy">
+        <span class="about-stage" id="about-stage">
+          <img src="ollie_clean.png" id="about-ollie-img" alt="Ollie the owl" loading="lazy">
+          <!-- Eyelids for the blink. Positions match ollie.png; adjust if the image changes. -->
+          <span class="eyelid" style="left:23%; top:26%; width:25%; height:20%"></span>
+          <span class="eyelid" style="left:58%; top:24%; width:23.5%; height:20%"></span>
+        </span>
       </div>
       <div>
         <h3>Our story</h3>
         <p>We are Manjusha and Rita. Ayurveda taught us to listen to ourselves.
-        We built OllieWise to bring its teachings into everyday life, one small
-        habit at a time.</p>
+        We built OllieWise to bring that awareness into everyday life, one
+        small habit at a time.</p>
       </div>
     </div>
 
@@ -558,7 +566,7 @@
           <circle cx="12" cy="9.800" r="2.800"/>
           <path d="M6.700 19.200c.9-2.300 2.900-3.700 5.300-3.700s4.400 1.400 5.300 3.700"/>
         </svg>
-        <p>Chosen for how you are built</p>
+        <p>Chosen for you, as you are</p>
       </div>
     </div>
   </div>
@@ -717,6 +725,21 @@
     if (isMorning && !reduce) scheduleWave();
 
     placeLids(slot[0]);
+  })();
+</script>
+<script>
+  // About section: Ollie blinks now and then.
+  (function () {
+    var st = document.getElementById('about-stage');
+    if (!st) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    (function loop() {
+      setTimeout(function () {
+        st.classList.add('blink');
+        setTimeout(function () { st.classList.remove('blink'); }, 340);
+        loop();
+      }, 2200 + Math.random() * 5200);
+    })();
   })();
 </script>
 </body>
