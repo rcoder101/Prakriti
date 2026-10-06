@@ -3,10 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OllieWise · At home in yourself</title>
-<meta name="description" content="OllieWise is a daily-routine companion. A few quick questions, a personal blueprint in plain words, and small habits that fit how you actually run. Rooted in Ayurveda, no jargon required.">
+<title>OllieWise · Ayurveda wellness app</title>
+<meta name="description" content="OllieWise is an Ayurveda wellness app. Better digestion, deeper sleep, a calmer mind. One small habit at a time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://olliewise.com/">
+<meta property="og:site_name" content="OllieWise">
 <meta property="og:title" content="OllieWise · At home in yourself">
-<meta property="og:description" content="Your day has a rhythm. Ollie helps you find it.">
+<meta property="og:description" content="The wisdom is already in you. OllieWise helps you hear it.">
+<meta property="og:image" content="https://olliewise.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OllieWise. At home in yourself. Ollie the owl with a green leaf on top of the head.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
@@ -184,6 +192,51 @@
   .section-lead { color: var(--ink-soft); max-width: 42em; margin-bottom: 40px; }
 
   /* How it works */
+  #how h2 { margin-bottom: 32px; }
+  .how-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 48px; align-items: center; }
+  #how .steps { grid-template-columns: 1fr; }
+  #how .step p { text-wrap: balance; }
+  @media (min-width: 761px) {
+    #how .step { display: grid; grid-template-columns: 34px 1fr; column-gap: 18px; padding: 24px 26px; }
+    #how .step .num { grid-row: 1 / span 2; margin-bottom: 0; }
+    #how .step h3 { margin-bottom: 6px; }
+  }
+
+  /* A simplified drawing of the app's Today screen. Not a screenshot. */
+  .app-shot { display: flex; justify-content: center; }
+  .app-phone {
+    zoom: 0.76; width: 390px; box-sizing: content-box; padding: 8px;
+    background: var(--ink); border-radius: 38px;
+    box-shadow: 0 8px 40px rgba(58, 46, 40, 0.12);
+  }
+  .app-screen { background: var(--canvas); border-radius: 30px; overflow: hidden; font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .app-body { padding: 32px 16px 28px; display: flex; flex-direction: column; gap: 24px; }
+  .app-greet { display: flex; align-items: center; gap: 12px; }
+  .app-ollie {
+    width: 60px; height: 60px; border-radius: 50%; background: #fff; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .app-ollie img { width: 40px; height: auto; }
+  .app-bubble {
+    background: var(--warm); border: 1px solid var(--warm-border); border-radius: 14px;
+    padding: 10px 14px; font-style: italic; font-weight: 500; line-height: 1.45;
+  }
+  .app-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; line-height: 1.2; text-transform: uppercase; margin-bottom: 10px; }
+  .app-habit { background: #E9EBE1; border: 1.5px solid var(--sage); border-radius: 14px; padding: 24px 20px; }
+  .app-habit-title { font-size: 17px; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+  .app-habit-text { margin-bottom: 18px; }
+  .app-answers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .app-answers span {
+    height: 48px; border-radius: 8px; border: 1px solid #E7E2DB; background: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 500;
+  }
+  .app-tabs {
+    display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #E7E2DB;
+    padding: 8px 16px 24px; text-align: center; font-size: 11px; line-height: 1.3;
+  }
+  .app-tabs span { min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; opacity: 0.45; }
+  .app-tabs span.on { opacity: 1; font-weight: 600; }
+  .app-tabs svg { width: 22px; height: 22px; color: var(--sage); }
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .step {
     background: var(--card); border-radius: 20px; padding: 26px;
@@ -218,6 +271,28 @@
   }
   .pattern .trad em { color: var(--ink); font-style: normal; font-weight: 700; }
 
+  /* About */
+  .about-why { color: var(--ink); font-size: 1.15rem; line-height: 1.6; max-width: 36em; margin-bottom: 48px; text-wrap: pretty; }
+  .about h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  .about-story {
+    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px;
+    align-items: center; margin-bottom: 56px;
+  }
+  .about-ollie {
+    background: var(--canvas); border-radius: 20px; padding: 28px;
+    box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05); text-align: center; line-height: 0;
+  }
+  .about-ollie img { width: 100%; max-width: 190px; height: auto; }
+  .about-story p { color: var(--ink-soft); max-width: 32em; text-wrap: pretty; }
+  .about h3.trust-title { margin-bottom: 18px; }
+  .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .trust-item {
+    background: var(--canvas); border-radius: 20px; padding: 26px;
+    box-shadow: 0 4px 24px rgba(58, 46, 40, 0.05);
+  }
+  .trust-item .icon { display: block; width: 24px; height: 24px; color: var(--cta); margin-bottom: 12px; }
+  .trust-item p { font-size: 0.95rem; color: var(--ink); line-height: 1.5; text-wrap: balance; }
+
   /* Waitlist */
   .waitlist-box {
     background: var(--warm);
@@ -248,7 +323,12 @@
     .hero { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 48px; }
     .mascot-card { order: -1; max-width: 300px; margin: 0 auto; padding: 20px; }
     .mascot-card img#ollie-img, .ollie-stage { max-width: 168px; }
-    .steps, .patterns { grid-template-columns: 1fr; }
+    .steps, .patterns, .trust { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; gap: 32px; }
+    .app-shot { order: -1; }
+    .about-story { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .about-ollie { max-width: 300px; width: 100%; margin: 0 auto; padding: 20px; }
+    .about-ollie img { max-width: 150px; }
     section { padding: 48px 0; }
   }
 </style>
@@ -275,7 +355,7 @@
     <div class="mascot-card">
       <div class="speech" id="ollie-speech">Evening. Time to wind down well.</div>
       <div class="ollie-stage" id="ollie-stage">
-        <img src="ollie.png" id="ollie-img" alt="Ollie the owl, holding a sprig of fresh leaves">
+        <img src="ollie.png" id="ollie-img" alt="Ollie the owl, with a green leaf on top of the head">
         <img src="ollie_wing.png?v=6" id="ollie-wing" alt="" aria-hidden="true">
         <svg id="ollie-sun" viewBox="0 0 100 100" aria-hidden="true">
           <g class="rays">
@@ -319,11 +399,7 @@
   <div class="wrap">
     <p class="kicker">How it works</p>
     <h2>Three small steps, then a little every day</h2>
-    <p class="section-lead">
-      No hour-long intake forms. OllieWise asks the fewest questions it can,
-      learns as you go, and never asks for more of your morning than you said
-      you have.
-    </p>
+    <div class="how-grid">
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
@@ -333,8 +409,7 @@
           <circle cx="12.5" cy="11.5" r="0.6" fill="currentColor"/>
           <circle cx="16" cy="11.5" r="0.6" fill="currentColor"/>
         </svg>Say hello</h3>
-        <p>A few friendly questions, and your first two habits
-        the same day.</p>
+        <p>Tell Ollie a little about yourself, and start the same day.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
@@ -343,8 +418,7 @@
           <path d="M15.5 3.5V7H19"/>
           <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3.5"/>
         </svg>Meet your blueprint</h3>
-        <p>A short check-in completes your picture: how you're built, and
-        what needs attention first, in words you already know.</p>
+        <p>Learn how you are built, and where to begin.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
@@ -352,9 +426,36 @@
           <path d="M3 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6" transform="translate(-1.5 1)"/>
           <circle cx="17.5" cy="5.5" r="2.3"/>
           <path d="M17.5 1.8v.9M17.5 8.3v.9M13.8 5.5h.9M20.3 5.5h.9"/>
-        </svg>Live your rhythm</h3>
-        <p>Small daily habits and a weekly pulse on how you're trending.
-        More unlocks as your streak builds.</p>
+        </svg>Make it yours</h3>
+        <p>Small daily habits chosen for you, and a weekly check on how you are doing.</p>
+      </div>
+    </div>
+      <!-- Simplified drawing of the Today screen. Wording matches the app. -->
+      <div class="app-shot" role="img" aria-label="The Today screen in the OllieWise app. Ollie says: Morning. Let's make today count. One habit for this morning: Warm water on waking.">
+        <div class="app-phone" aria-hidden="true">
+          <div class="app-screen">
+            <div class="app-body">
+              <div class="app-greet">
+                <div class="app-ollie"><img src="ollie.png" alt="" loading="lazy"></div>
+                <div class="app-bubble">Morning. Let's make today count.</div>
+              </div>
+              <div>
+                <div class="app-label">This morning</div>
+                <div class="app-habit">
+                  <div class="app-habit-title">Warm water on waking</div>
+                  <div class="app-habit-text">Drink warm water first thing.</div>
+                  <div class="app-answers"><span>Did it</span><span>Kind of</span><span>Not today</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="app-tabs">
+              <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>Today</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="5" y="3" width="15" height="18" rx="2"/><path d="M9 3v18M12 9h5M12 13h5"/></svg>Journal</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>Blueprint</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.500v3M2.500 12h3M18.500 12h3M5.300 5.300l2.100 2.100M16.600 16.600l2.100 2.100M5.300 18.700l2.100-2.100M16.600 7.400l2.100-2.100"/></svg>Settings</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -395,6 +496,56 @@
         <p>Calm, steady, unhurried. What helps: lightness, movement,
         and a spark.</p>
         <p class="trad">Ayurveda calls this pattern <em>Kapha</em>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt about" id="about">
+  <div class="wrap">
+    <h2>Why OllieWise</h2>
+    <p class="about-why">We believe every person carries wisdom within. Modern life is loud,
+    and that wisdom is quiet. Ayurveda makes you aware of it, and brings
+    you back home to yourself.</p>
+
+    <div class="about-story">
+      <!-- Stand in pose. To swap, change the src below to the new calm Ollie. -->
+      <div class="about-ollie">
+        <img src="ollie.png" id="about-ollie-img" alt="Ollie the owl" loading="lazy">
+      </div>
+      <div>
+        <h3>Our story</h3>
+        <p>We are Manjusha and Rita. Ayurveda changed our lives. Once we began
+        living by its teachings, the difference in our days was clear. Yet
+        these teachings are hard to reach without years of study. So we built
+        OllieWise to offer them one small habit at a time.</p>
+      </div>
+    </div>
+
+    <h3 class="trust-title">What you can trust</h3>
+    <div class="trust">
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.5C10.3 5.2 7.8 4.5 4 4.5v13c3.8 0 6.3.7 8 2 1.7-1.3 4.2-2 8-2v-13c-3.800 0-6.300.7-8 2z"/>
+          <path d="M12 6.5v13"/>
+        </svg>
+        <p>Habits drawn from the classical texts of Ayurveda</p>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="8" r="3"/>
+          <path d="M2.5 19.5c0-3 2.500-5 5.500-5s5.500 2 5.500 5"/>
+          <circle cx="17" cy="9" r="2.5"/>
+          <path d="M16.500 14.600c2.900.2 5 2 5 4.900"/>
+        </svg>
+        <p>Reviewed with practicing Ayurvedic counselors</p>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4.500 19.500C4.500 10.500 10 5 19.500 4.500c0 9.500-5.500 15-15 15z"/>
+          <path d="M4.500 19.500 13 11"/>
+        </svg>
+        <p>Wellness guidance for daily living, never a diagnosis</p>
       </div>
     </div>
   </div>
@@ -451,10 +602,10 @@
                            'Ollie the owl, waving good morning under a little sun'] :
       h >= 11 && h < 17 ? ['ollie.png',
                            'Afternoon. Your biggest meal belongs here.',
-                           'Ollie the owl, holding a sprig of fresh leaves'] :
+                           'Ollie the owl, with a green leaf on top of the head'] :
       h >= 17 && h < 22 ? ['ollie_evening.png',
                            'Evening. Time to wind down well.',
-                           'Ollie the owl, sleepy-eyed under a crescent moon'] :
+                           'Ollie the owl, with sleepy eyes under a crescent moon'] :
                           ['ollie_night_base.png?v=1',
                            'Still up? Ollie is already asleep.',
                            'Ollie the owl, asleep in her nest under a crescent moon'];
