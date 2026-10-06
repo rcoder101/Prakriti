@@ -69,6 +69,8 @@
   .hero h1 { font-size: clamp(2.5rem, 5vw, 3.125rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; text-wrap: balance; }
   .hero p.lead { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 28px; max-width: 34em; }
   /* Each sentence sits on a line of its own, so no line ends on a stray word */
+  /* Keeps "in yourself." together, so a phone breaks the headline after "At home" */
+  .hero h1 .keep { white-space: nowrap; }
   .hero p.lead span { display: block; text-wrap: balance; }
   .hero p.lead.why { font-size: 1.25rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 14px; }
   .hero p.lead.get { font-size: 1.0625rem; line-height: 1.55; margin-bottom: 32px; }
@@ -261,7 +263,7 @@
 
   <header class="hero">
     <div>
-      <h1>At home in yourself.</h1>
+      <h1>At home <span class="keep">in yourself.</span></h1>
       <p class="lead why"><span>The wisdom is already in you.</span> <span>OllieWise helps you hear it.</span></p>
       <p class="lead get"><span>Better digestion, deeper sleep, a calmer mind.</span> <span>One small habit at a time.</span></p>
       <div class="cta-row">
