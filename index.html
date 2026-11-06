@@ -368,6 +368,11 @@
     .about-stage { max-width: 150px; }
     section { padding: 48px 0; }
   }
+  .trust-band { padding-top: 56px; padding-bottom: 56px; }
+  .trust-band h2.trust-title { font-size: 1.35rem; margin-bottom: 18px; }
+  .patterns.helps .pattern h3 { margin-bottom: 6px; }
+  .beta-next { margin-top: 22px; }
+  .beta-next p { color: var(--ink); margin-bottom: 14px; }
 </style>
 </head>
 <body>
@@ -375,19 +380,18 @@
 <div class="wrap">
   <nav>
     <a class="wordmark" href="#">Ollie<span>Wise</span></a>
-    <a class="btn" href="#waitlist">Join the waitlist</a>
+    <a class="btn" href="#beta">Get my invite</a>
   </nav>
 
   <header class="hero">
     <div>
-      <h1>At home <span class="keep">in yourself.</span></h1>
-      <p class="lead why"><span>The wisdom is already in you.</span> <span>OllieWise helps you hear it.</span></p>
-      <p class="lead get"><span>Better digestion, deeper sleep, a calmer mind.</span> <span>One small habit at a time.</span></p>
+      <h1>Ready for deeper sleep, easier digestion and a calmer mind?</h1>
+      <p class="lead why"><span>Ollie walks with you, one small habit a day.</span></p>
       <div class="cta-row">
-        <a class="btn" href="#waitlist">Join the waitlist</a>
+        <a class="btn" href="#beta">Get my invite</a>
         <a class="btn btn-quiet" href="#how">How it works</a>
       </div>
-      <p class="hint">Rooted in Ayurveda.</p>
+      <p class="hint">Rooted in Ayurveda. Free on iPhone and Android while in beta.</p>
     </div>
     <div class="mascot-card">
       <div class="speech" id="ollie-speech">Evening. Time to wind down well.</div>
@@ -432,10 +436,42 @@
   </header>
 </div>
 
+<section class="trust-band" id="trust">
+  <div class="wrap">
+    <h2 class="trust-title">What you can trust</h2>
+    <div class="trust">
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.5C10.3 5.2 7.8 4.5 4 4.5v13c3.8 0 6.3.7 8 2 1.7-1.3 4.2-2 8-2v-13c-3.8 0-6.3.7-8 2z"/>
+          <path d="M12 6.5v13"/>
+          <path d="M6.5 8.5c1.2.1 2.300.4 3.200.8M6.500 12c1.200.1 2.300.4 3.200.8M17.500 8.500c-1.200.1-2.300.4-3.200.8M17.500 12c-1.200.1-2.300.4-3.200.8"/>
+        </svg>
+        <p>Habits drawn from the classical texts of Ayurveda</p>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9.5" cy="8" r="3.3"/>
+          <path d="M3 20c0-3.600 2.900-6 6.500-6 1.300 0 2.500.3 3.500.9"/>
+          <path d="M15 17.500l2.300 2.300L21.500 15"/>
+        </svg>
+        <p>Reviewed with Ayurvedic practitioners</p>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.2"/>
+          <circle cx="12" cy="9.800" r="2.800"/>
+          <path d="M6.700 19.200c.9-2.300 2.900-3.700 5.300-3.700s4.400 1.400 5.300 3.700"/>
+        </svg>
+        <p>Shaped by what matters to you</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="how">
   <div class="wrap">
     <p class="kicker">How it works</p>
-    <h2>Three small steps, then a little every day</h2>
+    <h2>Three simple steps to get started</h2>
     <div class="how-grid">
     <div class="steps">
       <div class="step">
@@ -454,8 +490,8 @@
           <path d="M6 3.5h9.5L19 7v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"/>
           <path d="M15.5 3.5V7H19"/>
           <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3.5"/>
-        </svg>Ollie meets you</h3>
-        <p>Ollie gets to know how you are built, and how you are now.</p>
+        </svg>Ollie listens</h3>
+        <p>Tell Ollie how you sleep, eat and feel. Ollie listens, and learns how you are built.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
@@ -463,8 +499,8 @@
           <path d="M3 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6" transform="translate(-1.5 1)"/>
           <circle cx="17.5" cy="5.5" r="2.3"/>
           <path d="M17.5 1.8v.9M17.5 8.3v.9M13.8 5.5h.9M20.3 5.5h.9"/>
-        </svg>Come home</h3>
-        <p>Ollie chooses small daily habits for you, and asks each week how you are doing.</p>
+        </svg>Feel the difference</h3>
+        <p>Ollie picks one small habit at a time for what you want to change, and checks in each week on how you feel.</p>
       </div>
     </div>
       <!-- Simplified drawing of the Today screen. Wording matches the app. -->
@@ -501,43 +537,35 @@
   </div>
 </section>
 
-<section id="built">
+
+<section id="helps">
   <div class="wrap">
-    <h2>How you are built</h2>
-    <p class="section-lead">
-      Ayurveda describes three qualities. Everyone has all three, and most of
-      us are led by two.
-    </p>
-    <div class="patterns">
-      <div class="pattern p1">
-        <img class="pattern-ollie" src="ollie_vata.png" alt="Ollie with both wings spread wide" loading="lazy">
-        <h3>Movement</h3>
-        <p>Quick, creative, adaptable.</p>
-        <p class="trad"><em>Vata</em></p>
+    <h2>Where Ollie starts with you</h2>
+    <p class="section-lead">Ollie picks the habits that fit you. Here are three you might meet.</p>
+    <div class="patterns helps">
+      <div class="pattern">
+        <h3>Deeper sleep</h3>
+        <p>Warm oil on the soles of your feet at bedtime.</p>
       </div>
-      <div class="pattern p2">
-        <img class="pattern-ollie" src="ollie_pitta.png" alt="Ollie pointing ahead with a determined face" loading="lazy">
-        <h3>Drive</h3>
-        <p>Sharp, focused, warm.</p>
-        <p class="trad"><em>Pitta</em></p>
+      <div class="pattern">
+        <h3>Easier digestion</h3>
+        <p>A cup of warm water first thing when you wake.</p>
       </div>
-      <div class="pattern p3">
-        <img class="pattern-ollie" src="ollie_kapha.png" alt="Ollie standing calm with half closed eyes" loading="lazy">
-        <h3>Steadiness</h3>
-        <p>Calm, strong, enduring.</p>
-        <p class="trad"><em>Kapha</em></p>
+      <div class="pattern">
+        <h3>A calmer mind</h3>
+        <p>Two minutes of humming bee breath, with Ollie guiding you.</p>
       </div>
     </div>
-    <p class="patterns-close">Your blend is your blueprint.</p>
   </div>
 </section>
 
 <section class="alt about" id="about">
   <div class="wrap">
     <h2>Why OllieWise</h2>
-    <p class="about-why">We believe every person carries wisdom within. Modern life is loud,
-    and that wisdom is quiet. Ayurveda makes you aware of it, and brings
-    you back home to yourself.</p>
+    <p class="about-why">You want to sleep through the night, enjoy your meals without discomfort,
+    and feel calm through your day. Ayurveda has guided people toward exactly this for
+    thousands of years. OllieWise brings that wisdom to you, one small habit at a time,
+    made for how you are.</p>
 
     <div class="about-story">
       <!-- Daytime Ollie, eyes open. To change the pose, change the src below. -->
@@ -551,49 +579,21 @@
       </div>
       <div>
         <h3>Our story</h3>
-        <p>We are Manjusha and Rita. Ayurveda taught us to listen to ourselves.
+        <p>We are Manjusha and Rita. Ayurveda taught us to listen to ourselves and find balance in everyday life.
         We built OllieWise to share that awareness with you, one small habit
         at a time.</p>
       </div>
     </div>
 
-    <h3 class="trust-title">What you can trust</h3>
-    <div class="trust">
-      <div class="trust-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6.5C10.3 5.2 7.8 4.5 4 4.5v13c3.8 0 6.3.7 8 2 1.7-1.3 4.2-2 8-2v-13c-3.8 0-6.3.7-8 2z"/>
-          <path d="M12 6.5v13"/>
-          <path d="M6.5 8.5c1.2.1 2.300.4 3.200.8M6.500 12c1.200.1 2.300.4 3.200.8M17.500 8.500c-1.200.1-2.300.4-3.200.8M17.500 12c-1.200.1-2.300.4-3.200.8"/>
-        </svg>
-        <p>Habits drawn from the classical texts of Ayurveda</p>
-      </div>
-      <div class="trust-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="9.5" cy="8" r="3.3"/>
-          <path d="M3 20c0-3.600 2.900-6 6.500-6 1.300 0 2.500.3 3.500.9"/>
-          <path d="M15 17.500l2.300 2.300L21.500 15"/>
-        </svg>
-        <p>Reviewed with Ayurvedic practitioners</p>
-      </div>
-      <div class="trust-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9.2"/>
-          <circle cx="12" cy="9.800" r="2.800"/>
-          <path d="M6.700 19.200c.9-2.300 2.900-3.700 5.300-3.700s4.400 1.400 5.300 3.700"/>
-        </svg>
-        <p>Chosen for you, as you are</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<section id="waitlist">
+<section id="beta">
   <div class="wrap">
     <div class="waitlist-box">
-      <h2 id="waitlist-title">Be first in the nest</h2>
-      <p id="waitlist-lead">OllieWise is an app for iPhone, with Android to follow.
-      We're welcoming a small group of early users soon. Leave your email and
-      Ollie will hoot when it's your turn.</p>
+      <h2 id="waitlist-title">Try OllieWise now</h2>
+      <p id="waitlist-lead">OllieWise is in beta on iPhone and Android, and free while we test.
+      Tell us your phone and your email, and Ollie sends you the way in.</p>
       <form class="waitlist-form" id="waitlist-form"
             action="/api/waitlist" method="post">
         <fieldset class="phone-choice">
@@ -608,11 +608,15 @@
           <!-- Honeypot: hidden from humans, irresistible to bots -->
           <input type="text" name="nickname" tabindex="-1" autocomplete="off"
                  style="position:absolute; left:-9999px;" aria-hidden="true">
-          <button class="btn" type="submit">Count me in</button>
+          <button class="btn" type="submit">Send my invite</button>
         </div>
       </form>
-      <p class="form-note" id="waitlist-note">No spam, no sharing your address.
-      Just one email when the doors open.</p>
+      <p class="form-note" id="waitlist-note">On Android? Use the Gmail address on your phone.
+      No spam, and we never share your address.</p>
+      <div class="beta-next" id="beta-iphone" hidden>
+        <p>On your iPhone, install TestFlight from the App Store, then tap the button below and choose Accept, then Install.</p>
+        <a class="btn" href="https://testflight.apple.com/join/MwQbJQtA">Join the iPhone beta</a>
+      </div>
     </div>
   </div>
 </section>
@@ -643,16 +647,16 @@
     var h = override !== null ? Number(override) : new Date().getHours();
     var slot =
       h >= 5 && h < 11  ? ['ollie_morning_base.png?v=6',
-                           'Morning. Warm water before coffee, remember.',
+                           'Morning. Warm water first, for easy digestion.',
                            'Ollie the owl, waving good morning under a little sun'] :
       h >= 11 && h < 17 ? ['ollie_clean.png',
-                           'Afternoon. Your biggest meal belongs here.',
+                           'Afternoon. Make lunch your biggest meal, for easy digestion.',
                            'Ollie the owl, with a green leaf on top of the head'] :
       h >= 17 && h < 22 ? ['ollie_evening.png',
-                           'Evening. Time to wind down well.',
+                           'Evening. Screens off by nine, for deeper sleep.',
                            'Ollie the owl, with sleepy eyes under a crescent moon'] :
                           ['ollie_night_base.png?v=1',
-                           'Still up? Ollie is already asleep.',
+                           'Still up? Slow breaths now, for a calmer mind.',
                            'Ollie the owl, asleep in her nest under a crescent moon'];
     document.getElementById('ollie-speech').textContent = slot[1];
 
@@ -673,14 +677,18 @@
       }).then(function (data) {
         form.style.display = 'none';
         document.getElementById('waitlist-lead').style.display = 'none';
-        document.getElementById('waitlist-title').textContent = data.already
-          ? "You're already in the nest"
-          : "You're in the nest";
-        document.getElementById('waitlist-note').textContent = data.already
-          ? "Ollie hasn't forgotten you. You'll hear from her the moment it's your turn."
-          : "Welcome email is on its way. Ollie will hoot when it's your turn.";
+        var phone = (new FormData(form)).get('phone');
+        document.getElementById('waitlist-title').textContent = "You're in the nest";
+        if (phone === 'iphone') {
+          document.getElementById('waitlist-note').textContent =
+            'Your invite is on its way by email. You can also start right now.';
+          document.getElementById('beta-iphone').hidden = false;
+        } else {
+          document.getElementById('waitlist-note').textContent =
+            "Ollie will email your Android invite within a day. Look in Promotions if you don't see it.";
+        }
       }).catch(function () {
-        btn.disabled = false; btn.textContent = 'Count me in';
+        btn.disabled = false; btn.textContent = 'Send my invite';
         document.getElementById('waitlist-note').textContent =
           'Hmm, that didn’t go through. Please try again in a moment.';
       });
