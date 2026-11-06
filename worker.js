@@ -15,7 +15,7 @@ const WELCOME_HTML = `
     </p>
     <p style="line-height:1.6; margin:0 0 14px;">
       Until then, here is one small habit to start tomorrow: drink warm
-      water first thing when you wake. Warm, not hot.
+      water soon after you wake. Warm, not hot.
     </p>
     <p style="line-height:1.6; margin:0 0 20px;">Talk soon,<br>Ollie</p>
     <p style="font-size:12px; color:#7A6E68; margin:0;">
@@ -57,7 +57,7 @@ const ANDROID_HTML = wrap(`
     <h1 style="font-size:22px; margin:0 0 16px;">Welcome to the nest</h1>
     ${P('Thank you for trying OllieWise on Android. Ollie is adding this Gmail address to the beta, and your invite link arrives by email within a day.')}
     ${P("Open the link on your Android phone while signed in with this same Gmail address. If you don't see our email, look in Promotions.")}
-    ${P('Until then, here is one small habit to start tomorrow: drink warm water first thing when you wake. Warm, not hot.')}`);
+    ${P('Until then, here is one small habit to start tomorrow: drink warm water soon after you wake. Warm, not hot.')}`);
 
 async function resendEmail(env, to, subject, html) {
   await fetch('https://api.resend.com/emails', {
