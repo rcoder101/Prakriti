@@ -608,7 +608,7 @@
           <!-- Honeypot: hidden from humans, irresistible to bots -->
           <input type="text" name="nickname" tabindex="-1" autocomplete="off"
                  style="position:absolute; left:-9999px;" aria-hidden="true">
-          <button class="btn" type="submit">Send my invite</button>
+          <button class="btn" type="submit">Get my invite</button>
         </div>
       </form>
       <p class="form-note" id="waitlist-note">On Android? Use the Gmail address on your phone.
@@ -688,7 +688,7 @@
             "Ollie will email your Android invite within a day. Look in Promotions if you don't see it.";
         }
       }).catch(function () {
-        btn.disabled = false; btn.textContent = 'Send my invite';
+        btn.disabled = false; btn.textContent = 'Get my invite';
         document.getElementById('waitlist-note').textContent =
           'Hmm, that didn’t go through. Please try again in a moment.';
       });
