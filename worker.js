@@ -27,11 +27,13 @@ const WELCOME_HTML = `
 
 // ⭐ The beta is open (2026-11-06): the site invites people in rather than
 // collecting a waitlist. iPhone people get the TestFlight link at once.
-// Android people need their Gmail added to the Play tester list by hand, so
-// they get a "coming within a day" note and the team gets an alert.
+// Android: open testing on Google Play since 2026-11-20, so anyone can join
+// with the public link and Android people get it at once too. (Until then
+// their Gmail was added to the internal tester list by hand, with a team
+// alert; that step is gone.)
 const TESTFLIGHT_LINK = 'https://testflight.apple.com/join/MwQbJQtA';
 const TESTFLIGHT_APP = 'https://apps.apple.com/app/testflight/id899247664';
-const TEAM_ALERT_TO = 'hello@olliewise.com';
+const PLAY_TEST_LINK = 'https://play.google.com/apps/testing/com.olliewise.app';
 
 function wrap(inner) {
   return `<div style="background:#FAF6EF; padding:32px 16px; font-family:-apple-system,'Segoe UI',sans-serif; color:#3A2E28;">
@@ -52,12 +54,14 @@ const IPHONE_HTML = wrap(`
     ${P('<strong>3.</strong> Open OllieWise from your home screen and say hello to Ollie.')}
     ${P('Your honest feedback shapes OllieWise. Reply to this email any time.')}`);
 
-const ANDROID_SUBJECT = 'Your OllieWise invite is coming';
+const ANDROID_SUBJECT = 'Your OllieWise invite';
 const ANDROID_HTML = wrap(`
     <h1 style="font-size:22px; margin:0 0 16px;">Welcome to the nest</h1>
-    ${P('Thank you for trying OllieWise on Android. Ollie is adding this Gmail address to the beta, and your invite link arrives by email within a day.')}
-    ${P("Open the link on your Android phone while signed in with this same Gmail address. If you don't see our email, look in Promotions.")}
-    ${P('Until then, here is one small habit to start tomorrow: drink warm water soon after you wake. Warm, not hot.')}`);
+    ${P('Thank you for trying OllieWise. Open this email on your Android phone, then:')}
+    ${P(`<strong>1.</strong> Tap your invite: <a href="${PLAY_TEST_LINK}" style="color:#3A2E28;">Join the OllieWise beta</a>`)}
+    ${P('<strong>2.</strong> Tap Become a tester, then Download it on Google Play.')}
+    ${P('<strong>3.</strong> Install OllieWise and say hello to Ollie.')}
+    ${P('Your honest feedback shapes OllieWise. Reply to this email any time.')}`);
 
 async function resendEmail(env, to, subject, html) {
   await fetch('https://api.resend.com/emails', {
@@ -76,9 +80,6 @@ async function sendWelcome(env, email, phone) {
       await resendEmail(env, email, IPHONE_SUBJECT, IPHONE_HTML);
     } else if (phone === 'android') {
       await resendEmail(env, email, ANDROID_SUBJECT, ANDROID_HTML);
-      const safe = email.replace(/[<>&"]/g, '');
-      await resendEmail(env, TEAM_ALERT_TO, `New Android tester: ${safe}`,
-        `<p>Add <strong>${safe}</strong> to First Wave in Play Console (Internal testing, Testers), then send the Android invite.</p>`);
     } else {
       await resendEmail(env, email, WELCOME_SUBJECT, WELCOME_HTML);
     }

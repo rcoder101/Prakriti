@@ -611,11 +611,14 @@
           <button class="btn" type="submit">Get my invite</button>
         </div>
       </form>
-      <p class="form-note" id="waitlist-note">On Android? Use the Gmail address on your phone.
-      No spam, and we never share your address.</p>
+      <p class="form-note" id="waitlist-note">No spam, and we never share your address.</p>
       <div class="beta-next" id="beta-iphone" hidden>
         <p>On your iPhone, install TestFlight from the App Store, then tap the button below and choose Accept, then Install.</p>
         <a class="btn" href="https://testflight.apple.com/join/MwQbJQtA">Join the iPhone beta</a>
+      </div>
+      <div class="beta-next" id="beta-android" hidden>
+        <p>On your Android phone, tap the button below, then Become a tester, then Download it on Google Play.</p>
+        <a class="btn" href="https://play.google.com/apps/testing/com.olliewise.app">Join the Android beta</a>
       </div>
     </div>
   </div>
@@ -685,7 +688,8 @@
           document.getElementById('beta-iphone').hidden = false;
         } else {
           document.getElementById('waitlist-note').textContent =
-            "Ollie will email your Android invite within a day. Look in Promotions if you don't see it.";
+            'Your invite is on its way by email. You can also start right now.';
+          document.getElementById('beta-android').hidden = false;
         }
       }).catch(function () {
         btn.disabled = false; btn.textContent = 'Get my invite';
